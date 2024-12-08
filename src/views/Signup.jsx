@@ -1,16 +1,15 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Grid, Avatar, Typography, Button, TextField } from "../components";
 import logo from '../assets/svg/logo.svg';
 import { Link, useNavigate } from "react-router-dom";
 import { useAppContext } from "../Context";
 import { signUp } from "../services/authentication";
 import { validateEmail, validatePassword } from "../utils/form";
-import { handleChange } from "../utils/core";
 
 const SignUp = () => {
     const navigate = useNavigate()
-    const { supabase, showSnackbar, showAlertMessage } = useAppContext()
+    const { supabase, showSnackbar, showAlertMessage, translate } = useAppContext()
     const [formData, setFormData] = useState({
         email: {
             value: "",
@@ -80,18 +79,18 @@ const SignUp = () => {
             </Grid>
 
             <Grid xs={12} sx={styles.boxCenter}>
-                <Typography variant="h2" sx={styles.title}>Login</Typography>
+                <Typography variant="h2" sx={styles.title}>{translate('sign-up')}</Typography>
             </Grid>
 
             <Grid xs={12} sx={styles.boxCenter}>
-                <Typography variant="h4">Seja bem vindo!</Typography>
+                <Typography variant="h4">{translate('welcome')}</Typography>
             </Grid>
 
             <Grid xs={12} sx={styles.boxCenter}>
                 <TextField 
                     value={formData.email.value}
                     fullWidth={true}
-                    label="Email"
+                    label="E-mail"
                     type="email"
                     error={formData.email.error}
                     helperText={formData.email.helperText}
@@ -103,7 +102,7 @@ const SignUp = () => {
                 <TextField
                     value={formData.password.value}
                     fullWidth={true}
-                    label="Senha"
+                    label={translate('password')}
                     type="password"
                     error={formData.password.error}
                     helperText={formData.password.helperText}
@@ -115,7 +114,7 @@ const SignUp = () => {
                 <TextField
                     value={formData.confirmPassword.value}
                     fullWidth={true}
-                    label="Confirmar Senha"
+                    label={translate('confirm-password')}
                     type="password"
                     error={formData.password.error}
                     helperText={formData.password.helperText}
@@ -124,7 +123,7 @@ const SignUp = () => {
             </Grid>
 
             <Grid xs={12} sx={styles.boxCenter}>
-                <Link to='/signin'>Fazer login</Link>
+                <Link to='/signin'>{translate('sign-in')}</Link>
             </Grid>
 
             <Grid xs={12}>
@@ -132,7 +131,7 @@ const SignUp = () => {
                     fullWidth={true}
                     onClick={verifyRegister}
                 >
-                    Cadastrar
+                    {translate('register')}
                 </Button>
             </Grid>
         </Grid>

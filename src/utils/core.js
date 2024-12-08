@@ -19,7 +19,7 @@ const handleChange = (data, setData, value, field) => {
 const getUser = () => {
     const user = localStorage.getItem("session");
     if(user !== 'null') {
-        return JSON.parse(user).user
+        return JSON.parse(user)?.user
     }
     return null;
 }
