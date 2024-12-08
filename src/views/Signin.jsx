@@ -5,11 +5,10 @@ import logo from '../assets/svg/logo.svg';
 import { Link, useNavigate } from "react-router-dom";
 import { useAppContext } from "../Context";
 import { signIn } from "../services/authentication";
-import { handleChange } from "../utils/core";
 
 const Signin = () => {
     const navigate = useNavigate()
-    const { supabase, showSnackbar, translate, showAlertMessage } = useAppContext()
+    const { supabase, showSnackbar, translate } = useAppContext()
     const [formData, setFormData] = useState({
         email: {
             value: "",
@@ -52,7 +51,7 @@ const Signin = () => {
                 </Grid>
 
                 <Grid xs={12} sx={styles.boxCenter}>
-                    <Typography variant="h2" sx={styles.title}>Login</Typography>
+                    <Typography variant="h2" sx={styles.title}>{translate('sign-in')}</Typography>
                 </Grid>
 
                 <Grid xs={12} sx={styles.boxCenter}>
@@ -73,14 +72,14 @@ const Signin = () => {
                     <TextField
                         value={formData.password.value}
                         fullWidth={true}
-                        label="Senha"
+                        label={translate('password')}
                         type="password"
                         onChange={(e) => setFormData({ ...formData, password: { value: e.target.value, error: false, helperText: '' } })}
                     />
                 </Grid>
 
                 <Grid xs={12} sx={styles.boxCenter}>
-                    <Link to='/signup'>Cadastrar</Link>
+                    <Link to='/signup'>{translate('sign-up')}</Link>
                 </Grid>
 
                 <Grid xs={12}>
@@ -88,7 +87,7 @@ const Signin = () => {
                         fullWidth={true}
                         onClick={verifyLogin}
                     >
-                        Entrar
+                        {translate('login')}
                     </Button>
                 </Grid>
             </Grid>

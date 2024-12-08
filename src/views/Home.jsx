@@ -152,7 +152,7 @@ const Home = () => {
                                     ACTIONS.map((action, index) => (
                                         <Grid key={index} size={{ xs: 4 }}>
                                             <CardNewItem
-                                                title={action.title}
+                                                title={translate(action.title)}
                                                 Icon={action.Icon}
                                                 color={action.color}
                                                 actionType={action.actionType}
